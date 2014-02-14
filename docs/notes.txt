@@ -1,0 +1,38 @@
+Setting up Mezzanine for make_school
+
+1. Follow the quick start on the Mezzanine site:
+http://mezzanine.jupo.org
+
+mezzanine-project make_school
+cd make_school
+python manage.py createdb
+-I created a default account, and accepted some of the defaults on the database creation.
+
+# Almost the first thing we do in Open Source projects is to create the public 
+# source code repository!
+#Add to github (details on setting up a github account and setting up ssh keys
+#are left as an excercise to the reader :-):
+#created repository make_school  on github.com
+created README.md in our project
+
+#In make_school directory
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:RichGibson/make_school.git
+git push -u origin master
+
+
+#then did git add for the rest of the site
+
+#Here is the basic workflow...
+# make changes, then:
+git add <files>
+git commit -m "commit message"
+git push origin master
+
+For the devlopement server I had to add a firewall rule to open port 8080:
+iptables -A INPUT -p tcp -d 0/0 -s 0/0 --dport 8080 -j ACCEPT
+
+Start the development server:
+python ./manage.py runserver 144.76.17.54:8080
